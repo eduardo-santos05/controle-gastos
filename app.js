@@ -2,6 +2,7 @@ import PromptSync from "prompt-sync"
 const prompt = PromptSync()
 
 import criarGasto from "./criarGasto.js"
+import formatarGasto from "./formatarGasto.js"
 
 function exibirMenu() {
     console.log("\n=== Controle de Gastos ===")
@@ -22,9 +23,18 @@ do {
         case "1":
             let descricao = prompt("Digite a descrição do gasto: ")
             let valor = Number(prompt("Digite o valor do gasto (R$): "))
-            criarGasto(descricao, valor)
-            gastos.push(criarGasto(descricao, valor))
+            let gasto = criarGasto(descricao, valor)
+            gastos.push(gasto)
             console.log("Gasto registrado!")
+            break
+        case "2":
+            if (gastos.length === 0) {
+                console.log("Nenhum gasto registrado.")
+            } else {
+                for (let i = 0; i < gastos.length; i++) {
+                    console.log(formatarGasto(gastos[i], i + 1))
+                }
+            }
             break
         case "0":
             console.log("Encerrando o controle de gastos. Até a próxima!")
