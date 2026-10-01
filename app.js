@@ -3,6 +3,7 @@ const prompt = PromptSync()
 
 import criarGasto from "./criarGasto.js"
 import formatarGasto from "./formatarGasto.js"
+import calcularTotal from "./calcularTotal.js"
 
 function exibirMenu() {
     console.log("\n=== Controle de Gastos ===")
@@ -35,6 +36,10 @@ do {
                     console.log(formatarGasto(gastos[i], i + 1))
                 }
             }
+            break
+        case "3":
+            let total = calcularTotal(gastos)
+            console.log(`Total gasto: R$ ${total.toFixed(2)}`)
             break
         case "0":
             console.log("Encerrando o controle de gastos. Até a próxima!")
