@@ -1,6 +1,8 @@
 import PromptSync from "prompt-sync"
 const prompt = PromptSync()
 
+import criarGasto from "./criarGasto.js"
+
 function exibirMenu() {
     console.log("\n=== Controle de Gastos ===")
     console.log("1. Registrar gasto")
@@ -10,11 +12,20 @@ function exibirMenu() {
     console.log("0. Sair")
 }
 
+let gastos = []
+
 let opcao
 do {
     exibirMenu()
     opcao = prompt("Escolha uma opção: ")
     switch (opcao) {
+        case "1":
+            let descricao = prompt("Digite a descrição do gasto: ")
+            let valor = Number(prompt("Digite o valor do gasto (R$): "))
+            criarGasto(descricao, valor)
+            gastos.push(criarGasto(descricao, valor))
+            console.log("Gasto registrado!")
+            break
         case "0":
             console.log("Encerrando o controle de gastos. Até a próxima!")
             break
