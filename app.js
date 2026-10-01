@@ -4,6 +4,7 @@ const prompt = PromptSync()
 import criarGasto from "./criarGasto.js"
 import formatarGasto from "./formatarGasto.js"
 import calcularTotal from "./calcularTotal.js"
+import salvarRelatorio from "./salvarRelatorio.js"
 
 function exibirMenu() {
     console.log("\n=== Controle de Gastos ===")
@@ -46,6 +47,15 @@ do {
             let total = calcularTotal(gastos)
             console.log(`Total gasto: R$ ${total.toFixed(2)}`)
             break
+        case "4":
+            if (gastos.length === 0) {
+                console.log("Nenhum gasto para salvar.")
+                break
+            } else {
+                salvarRelatorio(gastos)
+                console.log("Relatório salvo em relatorio.txt.")
+                break
+            }
         case "0":
             console.log("Encerrando o controle de gastos. Até a próxima!")
             break
