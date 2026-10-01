@@ -24,10 +24,15 @@ do {
         case "1":
             let descricao = prompt("Digite a descrição do gasto: ")
             let valor = Number(prompt("Digite o valor do gasto (R$): "))
-            let gasto = criarGasto(descricao, valor)
-            gastos.push(gasto)
-            console.log("Gasto registrado!")
-            break
+            if (valor <= 0) {
+                console.log("O valor precisa ser maior que 0.")
+                break
+            } else {
+                let gasto = criarGasto(descricao, valor)
+                gastos.push(gasto)
+                console.log("Gasto registrado!")
+                break
+            }  
         case "2":
             if (gastos.length === 0) {
                 console.log("Nenhum gasto registrado.")
